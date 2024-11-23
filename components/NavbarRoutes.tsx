@@ -84,6 +84,9 @@ export const NavbarRoutes = () => {
               </Link>
             )}
           </div>
+          <div>
+          <ModeToggle />
+          </div>
         </nav>
 
         {/* Mobile Navigation */}

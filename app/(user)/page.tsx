@@ -48,7 +48,7 @@ export default function LandingPage() {
         </section>
         <section id="featured" className="w-full dark:bg-primary-foreground py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center text-white mb-12">Featured Hostels</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center dark:text-white mb-12">Featured Hostels</h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {featuredHostels.map((hostel) => (
                 <Card key={hostel.id}>

@@ -11,10 +11,6 @@ import { MessageCenter } from './MessageCenter'
 export default function AdminDashboard() {
   const { currentUser } = useAppContext()
 
-  if (!currentUser || currentUser.role !== 'admin') {
-    return <div className="container mx-auto p-4">Access Denied</div>
-  }
-
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>

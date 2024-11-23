@@ -16,7 +16,7 @@ export const LoginForm = () => {
 
   return (
     <CardWrapper
-    headerLabel="Welcome back To Being a Member of FcBlogs"
+    headerLabel="Welcome back To Being a Member of HostelWorld"
     showSocial
     >
        <FormError message={ urlError}/>
