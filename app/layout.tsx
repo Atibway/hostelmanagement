@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ToastProvider } from "@/components/providers/toast-provider";
 import { ConfettiProvider } from "@/components/providers/confetti-providerr";
+import { AppProvider } from "@/components/providers/app-context";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,10 +20,11 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+
 export const metadata: Metadata = {
-  title: "FcBlog",
-  description: "Created by Nextjsmastermind",
-};
+  title: 'Hostel Management System',
+  description: 'Book and manage hostels easily',
+}
 
 export default async function RootLayout({
   children,
@@ -47,7 +49,10 @@ export default async function RootLayout({
             <ConfettiProvider/>
 <ToastProvider/>
 <Toaster/>
-        {children}
+<AppProvider>
+{children}
+</AppProvider>
+        
           </ThemeProvider>
       </body>
     </html>
