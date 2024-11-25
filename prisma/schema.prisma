@@ -8,17 +8,15 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
-}
-
 // datasource db {
-//   provider  = "postgresql"
-//   url  	    = env("DATABASE_URL")
-//   // uncomment next line if you use Prisma <5.10
-//   directUrl = env("DATABASE_URL_UNPOOLED")
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
 // }
+
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+}
 
 enum UserRole {
   ADMIN

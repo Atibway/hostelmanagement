@@ -5,7 +5,6 @@ import { ModeToggle } from "./modeToggler";
 import { Button } from "./ui/button";
 import { BedDouble, LogOutIcon, Menu } from "lucide-react";
 import Link from "next/link";
-import { useCurrentRole } from "@/hooks/use-current-role";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
@@ -14,7 +13,6 @@ import {
   SheetContent,
   SheetDescription,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { signOut } from "next-auth/react";

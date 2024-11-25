@@ -28,6 +28,8 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   }
 
   return (
+    <div>
+
     <Model
       title="Are you sure?"
       description="This action cannot be undone"
@@ -43,5 +45,6 @@ export const AlertModal: React.FC<AlertModalProps> = ({
         </Button>
       </div>
     </Model>
+    </div>
   );
 };

@@ -53,10 +53,10 @@ export default function AboutPage() {
       <div className="bg-gray-100  dark:bg-gray-800 rounded-lg p-8 mb-12">
         <h2 className="text-2xl dark:text-white font-semibold mb-4">Our Mission</h2>
         <p className="text-gray-600 mb-4">
-          At HostelWorld, we're on a mission to make travel more accessible, social, and enriching. We believe that by connecting travelers with unique accommodations and fostering a global community, we can break down barriers and promote cross-cultural understanding.
+          At HostelWorld, we&apos;re on a mission to make travel more accessible, social, and enriching. We believe that by connecting travelers with unique accommodations and fostering a global community, we can break down barriers and promote cross-cultural understanding.
         </p>
         <p className="text-gray-600">
-          Whether you're a solo backpacker, a group of friends on an adventure, or a family looking for an affordable getaway, HostelWorld is here to help you find the perfect place to stay and create unforgettable memories.
+          Whether you&apos;re a solo backpacker, a group of friends on an adventure, or a family looking for an affordable getaway, HostelWorld is here to help you find the perfect place to stay and create unforgettable memories.
         </p>
       </div>
 

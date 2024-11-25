@@ -97,7 +97,7 @@ export async function updateBooking(id: string, formData: FormData) {
 export async function deleteBooking(id: string) {
   try {
     await prisma.booking.delete({ where: { id } })
-    revalidatePath('/bookings')
+    revalidatePath('/mybookings')
     return { success: true }
   } catch (error) {
     return { error: 'Failed to delete booking' }

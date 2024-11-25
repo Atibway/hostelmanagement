@@ -39,3 +39,13 @@ export async function createHostel(formData: FormData) {
   }
 }
 
+export async function deleteHostel(id: string) {
+  try {
+    await prisma.hostel.delete({ where: { id } })
+    revalidatePath('/admin/hostels')
+    return { success: true }
+  } catch (error) {
+    return { error: 'Failed to delete booking' }
+  }
+}
+

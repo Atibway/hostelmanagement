@@ -6,11 +6,10 @@ import { HostelColumn } from "./columns";
 import { Button } from "@/components/ui/button";
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 import toast from "react-hot-toast";
-import { useParams, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { useState } from "react";
-
-import axios from "axios";
 import { AlertModal } from "@/components/modals/AlertModel";
+import { deleteHostel } from "@/actions/create-hostel";
 
 
 interface CellActionsProps {
@@ -23,7 +22,7 @@ const CellActions: React.FC<CellActionsProps> = ({
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const router = useRouter()
-    const params = useParams()
+
 
     const onCopy = (id: string) => {
         navigator.clipboard.writeText(id);
@@ -33,7 +32,7 @@ const CellActions: React.FC<CellActionsProps> = ({
     const onDelete = async () => {
         try {
           setLoading(true);
-          await axios.delete(`/api/hostels/${data.id}`);
+         await deleteHostel(data.id)
           router.refresh();
           toast.success("Hostel Deleted");
         } catch (error) {

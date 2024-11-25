@@ -4,15 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import {  MapPin, Calendar, Search } from 'lucide-react'
-import { useState } from 'react'
 import { Amenity, Hostel, Image } from '@prisma/client'
 
-// Dummy data for featured hostels
-const featuredHostels = [
-  { id: 1, name: "Sunflower Hostel", location: "Berlin, Germany", price: 20, image: "https://wallpaperaccess.com/full/9519645.jpg" },
-  { id: 2, name: "Beachside Bunk", location: "Barcelona, Spain", price: 25, image: "https://th.bing.com/th/id/OIP.oVYQDob2Yet1VxXk2KJ-8QHaFj?w=1200&h=900&rs=1&pid=ImgDetMain" },
-  { id: 3, name: "Mountain View Lodge", location: "Interlaken, Switzerland", price: 30, image: "https://hostelgeeks.com/wp-content/uploads/2023/01/Sanga-Hostel-Dorm.jpg" },
-]
+
 interface HostelWithRelations extends Hostel {
     images: Image[];
     amenities: Amenity[];
@@ -22,11 +16,8 @@ interface HostelWithRelations extends Hostel {
   }: {
     hostels: HostelWithRelations[];
   }) {
-    const [message, setMessage] = useState('')
-
-    const handleSendMessage = () => {
-       
-      }
+   
+   
   return (
     <div className="flex flex-col min-h-screen">
       

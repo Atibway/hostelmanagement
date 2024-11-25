@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import Image from 'next/image'
+
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Star, MapPin, Users, Calendar } from 'lucide-react'
+
+import {  MapPin,  Calendar } from 'lucide-react'
 import { db } from '@/lib/db'
 
 // Mock data for hostels

@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { UserRole } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 
@@ -29,11 +28,11 @@ export const columns: ColumnDef<UsersColumn>[] = [
     accessorKey: "role",
     header: "Role",
     cell:({row})=> {
-      const router = useRouter()
+      
       const toggleUserRole = async(userId: string, currentRole:UserRole) => {
       await toggleUser({userId, userRole:currentRole}).then(()=>{
         toast.success("User Role Updated")
-        router.refresh()
+        window.location.reload()
       })
       }
       return(

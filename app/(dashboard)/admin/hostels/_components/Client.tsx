@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import Heading from '@/components/ui/Heading'
 import { Separator } from '@/components/ui/separator'
 import { Plus } from 'lucide-react'
-import { useParams, useRouter } from 'next/navigation'
+import {  useRouter } from 'next/navigation'
 import React from 'react'
 import { HostelColumn, columns } from './columns'
 import { DataTable } from '@/components/ui/data-table'
@@ -19,7 +19,6 @@ const ProductClient: React.FC<ProductClientProps> = ({
     data
 }) => {
     const router = useRouter()
-    const params = useParams()
 
   return (
     <>

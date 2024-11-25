@@ -10,7 +10,7 @@ import { Calendar } from "@/components/ui/calendar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {  Wifi} from 'lucide-react'
 import { createBooking } from '@/actions/bookingActions'
-import { Amenity, Booking, Hostel, Image } from '@prisma/client'
+import { Amenity, Hostel, Image } from '@prisma/client'
 import { useToast } from "@/hooks/use-toast"
 import { useCurrentUser } from '@/hooks/use-current-user'
 
