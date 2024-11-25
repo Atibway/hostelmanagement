@@ -139,7 +139,7 @@ export default function UpdateHostelForm({ hostel }: { hostel: HostelData }) {
               name="price"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price per Night</FormLabel>
+                  <FormLabel>Price per Semester</FormLabel>
                   <FormControl>
                     <Input type="number" step="0.01" {...field} onChange={e => field.onChange(parseFloat(e.target.value))} />
                   </FormControl>
