@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Toaster as ShadcnToaster } from "@/components/ui/toaster"
 import "./globals.css";
 import { auth } from "@/auth";
 import { SessionProvider } from "next-auth/react";
@@ -51,8 +52,9 @@ export default async function RootLayout({
 <Toaster/>
 <AppProvider>
 {children}
+
 </AppProvider>
-        
+        <ShadcnToaster/>
           </ThemeProvider>
       </body>
     </html>

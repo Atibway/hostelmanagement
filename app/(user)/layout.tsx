@@ -13,7 +13,7 @@ const DashboardLayout = ({
   return (
     <>
     <NavbarRoutes/>
-    <div className='max-h-screen'>
+    <div className='min-h-screen dark:bg-primary-foreground'>
         {children}
     </div>
     </>
