@@ -8,17 +8,15 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
-}
-
 // datasource db {
-//   provider  = "postgresql"
-//   url  	    = env("DATABASE_URL")
-//   // uncomment next line if you use Prisma <5.10
-//   directUrl = env("DATABASE_URL_UNPOOLED")
+//   provider = "mysql"
+//   url      = env("DATABASE_URL")
 // }
+
+datasource db {
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+}
 
 enum UserRole {
   ADMIN
@@ -55,14 +53,51 @@ model Account {
   id_token                 String? @db.Text
   session_state            String?
   user                     User?   @relation(fields: [userId], references: [id])
- 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
- 
   @@unique([provider, providerAccountId])
   @@index([userId])
 }
  
+ model Hostel {
+  id String @id @default(uuid())
+  name        String
+  location    String
+  description String
+  price       Int
+  amenities   Amenity[]  // Relation to Amenities
+  images      Image[]    // Relation to Images
+  bookings    Booking[]  // Relation to Bookings
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Amenity {
+  id String @id @default(uuid())
+  name     String
+  hostelId String
+  hostel   Hostel   @relation(fields: [hostelId], references: [id], onDelete: Cascade)
+}
+
+model Image {
+  id String @id @default(uuid())
+  url      String
+  hostelId String
+  hostel   Hostel   @relation(fields: [hostelId], references: [id], onDelete: Cascade)
+}
+
+model Booking {
+  id String @id @default(uuid())
+  startDate    DateTime
+  endDate      DateTime
+  guests       Int
+  telNumber    String
+  totalPrice   Int
+  userId       String
+  hostelId     String
+  hostel       Hostel   @relation(fields: [hostelId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+}
  
 
 

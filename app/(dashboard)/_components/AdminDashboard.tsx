@@ -1,7 +1,5 @@
 "use client"
 
-import { useState } from 'react'
-import { useAppContext } from '@/components/providers/app-context'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { HostelManagement } from './HostelManagement'
 import { BookingOverview } from './BookingOverview'
@@ -9,7 +7,6 @@ import { UserManagement } from './UserManagement'
 import { MessageCenter } from './MessageCenter'
 
 export default function AdminDashboard() {
-  const { currentUser } = useAppContext()
 
   return (
     <div className="container mx-auto p-4">

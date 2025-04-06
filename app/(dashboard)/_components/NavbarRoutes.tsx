@@ -1,11 +1,12 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { ModeToggle } from "./modeToggler";
-import { Button } from "./ui/button";
+import { ModeToggle } from "@/components/modeToggler";
+import { Button } from "@/components/ui/button";
 import { BedDouble, LogOutIcon, Menu } from "lucide-react";
 import Link from "next/link";
-import { Avatar, AvatarImage } from "./ui/avatar";
+
+
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 import {
@@ -16,6 +17,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { signOut } from "next-auth/react";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 export const NavbarRoutes = () => {
   const user = useCurrentUser();
@@ -43,7 +45,7 @@ export const NavbarRoutes = () => {
           <div className="flex items-center space-x-6">
             {user?.role === "ADMIN" && (
               <>
-              {pathName === "/admin"? (
+              {pathName.startsWith("/admin")? (
               <Link
               href={"/"}
               >
@@ -64,28 +66,23 @@ export const NavbarRoutes = () => {
             )}
             <Link
               className="text-sm font-medium hover:underline underline-offset-4"
-              href="/"
-            >
-              Home
-            </Link>
-            <Link
-              className="text-sm font-medium hover:underline underline-offset-4"
-              href="/about"
-            >
-              About
-            </Link>
-            <Link
-              className="text-sm font-medium hover:underline underline-offset-4"
-              href="/hostels"
+              href="/admin/hostels"
             >
               Hostels
             </Link>
             <Link
               className="text-sm font-medium hover:underline underline-offset-4"
-              href="/mybookings"
+              href="/admin/bookings"
             >
-              My Bookings
+              Bookings
             </Link>
+            <Link
+              className="text-sm font-medium hover:underline underline-offset-4"
+              href="/admin/users"
+            >
+              Users
+            </Link>
+        
           </div>
 
           {/* User Avatar or Login/Logout */}
@@ -157,18 +154,16 @@ export const NavbarRoutes = () => {
               )}
               </>
             )}
-                <Link href="/">
-                  <Button className="w-full">Home</Button>
-                </Link>
-                <Link href="/about">
-                  <Button className="w-full">About</Button>
-                </Link>
-                <Link href="/mybookings">
-                  <Button className="w-full">My Bookings</Button>
-                </Link>
-                <Link href="/hostels">
+                <Link href="/admin/hostels">
                   <Button className="w-full">Hostels</Button>
                 </Link>
+                <Link href="/admin/bookings">
+                  <Button className="w-full">Bookings</Button>
+                </Link>
+                <Link href="/admin/users">
+                  <Button className="w-full">Users</Button>
+                </Link>
+
                 <div>
                   {user ? (
                     <Button
