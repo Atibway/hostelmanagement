@@ -92,15 +92,28 @@ model Booking {
   endDate      DateTime
   guests       Int
   telNumber    String
+  isPaid       Boolean @default(false)
+  isCancelled  Boolean @default(false)
+  isCompleted  Boolean @default(false)
   totalPrice   Int
+  username     String?
   userId       String
   hostelId     String
   hostel       Hostel   @relation(fields: [hostelId], references: [id], onDelete: Cascade)
   createdAt    DateTime @default(now())
+  @@unique([userId, hostelId])
 }
  
 
 
+ model StripeCustomer {
+  id String @id @default(uuid())
+  userId String @unique
+  stripeCustomerId String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ }
  
 
  

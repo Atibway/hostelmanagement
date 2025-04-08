@@ -3,11 +3,12 @@ import HostelDetails from "./_components/hostel-details"
 import { getUserBookingsByHostelId } from "@/actions/bookingActions"
 
 
-const HostelBookingPage = async({
-  params
-}:{
-  params:{id:string}
-}) => {
+const HostelBookingPage = async (
+  props:{
+    params: Promise<{id:string}>
+  }
+) => {
+  const params = await props.params;
 
   const hostel = await db.hostel.findUnique({
     where:{
@@ -15,8 +16,8 @@ const HostelBookingPage = async({
     },
     include: { images: true, amenities: true },
   })
-const HostelBookedByUser = await getUserBookingsByHostelId({hostelId:hostel?.id})
-const HostelBookedByUserId =  HostelBookedByUser.bookings?.hostelId
+  const HostelBookedByUser = await getUserBookingsByHostelId({hostelId:hostel?.id})
+  const HostelBookedByUserId =  HostelBookedByUser.bookings?.hostelId
   return (
     <HostelDetails
     HostelBookedByUserId={HostelBookedByUserId}

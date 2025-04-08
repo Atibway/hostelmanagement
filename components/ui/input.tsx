@@ -16,6 +16,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         ref={ref}
         {...props}
+        spellCheck="false"
+        data-ms-editor="true"
       />
     )
   }

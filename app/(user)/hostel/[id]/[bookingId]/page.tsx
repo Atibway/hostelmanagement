@@ -8,23 +8,24 @@ import { db } from '@/lib/db'
 import { format } from 'date-fns'
 
 
-export default async function BookingConfirmationPage({
-  params
-}:{
-  params:{bookingId: string}
-}) {
-  
-const booking = await db.booking.findUnique({
-  where:{
-    id: params.bookingId
-  },
-  include:{
-    hostel: true
+export default async function BookingConfirmationPage(
+  props:{
+    params: Promise<{bookingId: string}>
   }
-})
+) {
+  const params = await props.params;
 
-const endDate = booking?.endDate as string | number | Date;
-const startDate = booking?.startDate as string | number | Date;
+  const booking = await db.booking.findUnique({
+    where:{
+      id: params.bookingId
+    },
+    include:{
+      hostel: true
+    }
+  })
+
+  const endDate = booking?.endDate as string | number | Date;
+  const startDate = booking?.startDate as string | number | Date;
   return (
     <div className="container dark:bg-primary-foreground  mx-auto px-4 py-8">
       <Card className="max-w-2xl mx-auto">

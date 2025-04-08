@@ -1,11 +1,9 @@
 import React from 'react'
 import LandingPage from './_component/HomePage'
-import { db } from '@/lib/db'
+import { getHostels } from '@/actions/hostels'
 
 const HomePage = async() => {
-  const hostels = await db.hostel.findMany({
-    include: { images: true, amenities: true },
-  })
+  const hostels = await getHostels()
   return (
     <LandingPage
     hostels={hostels}

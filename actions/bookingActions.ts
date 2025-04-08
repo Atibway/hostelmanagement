@@ -2,8 +2,11 @@
 
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
-import { db as prisma } from '@/lib/db'
+import { db, db as prisma } from '@/lib/db'
 import { currentUser } from '@/lib/auth'
+import { NextResponse } from 'next/server'
+import Stripe from 'stripe'
+import stripe from '@/lib/stripe'
 
 // Define a schema for booking input validation
 const BookingSchema = z.object({
@@ -52,7 +55,62 @@ export async function createBooking(formData: FormData) {
       },
     })
 
-    return { booking }
+
+  
+
+    const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [
+        {
+            quantity: 1,
+            price_data: {
+                currency: "UGX",
+                product_data:{
+                    name: hostel.name,
+                    description: hostel.description!,
+                },
+                unit_amount: Math.round(hostel.price! * 100)
+            }
+        }
+    ]
+
+    let stripeCustomer = await db.stripeCustomer.findUnique({
+        where:{
+            userId: user?.id,
+        },
+        select:{
+            stripeCustomerId: true
+        }
+    })
+
+    if(!stripeCustomer){
+        const customer = await stripe.customers.create({
+            email: user?.email as string,
+        })
+
+        stripeCustomer = await db.stripeCustomer.create({
+            data:{
+                userId: user?.id as string,
+                stripeCustomerId: customer.id
+            }
+        })
+    }
+
+    if (!stripeCustomer?.stripeCustomerId) {
+        throw new Error('Stripe customer ID is undefined');
+    }
+
+    const session = await stripe.checkout.sessions.create({
+        customer: stripeCustomer.stripeCustomerId,
+        line_items,
+        mode: 'payment',
+        success_url: `${process.env.NEXT_PUBLIC_APP_URL}/hostel/${hostel.id}/${booking.id}`,
+        cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/hostel/${hostel.id}?canceled=1`,
+        metadata: {
+            hostelId: hostel.id,
+            userId: user?.id || '',
+        },
+    });
+
+    return NextResponse.json({url: session.url})
   } catch (error) {
     return { error: 'Failed to create booking' }
   }

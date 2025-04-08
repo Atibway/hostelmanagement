@@ -1,5 +1,5 @@
 {
-  "name": "next-auth",
+  "name": "hostel-management-system",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
     "postinstall": "prisma generate --no-engine"
   },
   "dependencies": {
+    "@auth/core": "^0.38.0",
     "@auth/prisma-adapter": "^2.4.2",
     "@hello-pangea/dnd": "^17.0.0",
     "@hookform/resolvers": "^3.9.0",
@@ -38,8 +39,8 @@
     "decimal.js": "^10.4.3",
     "framer-motion": "^11.11.11",
     "lucide-react": "^0.439.0",
-    "next": "14.2.10",
-    "next-auth": "^5.0.0-beta.20",
+    "next": "15.2.4",
+    "next-auth": "^5.0.0-beta.25",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-confetti": "^6.1.0",
@@ -53,6 +54,7 @@
     "resend": "^4.0.0",
     "simplex-noise": "^4.0.3",
     "sonner": "^1.5.0",
+    "stripe": "^18.0.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^7.0.2",

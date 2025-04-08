@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation'
 import { db } from '@/lib/db'
 import UpdateHostelForm from './_components/UpdateHostelForm'
 
-export default async function EditHostelPage({ params }: { params: { hostelId: string } }) {
+export default async function EditHostelPage(props: { params: Promise<{ hostelId: string }> }) {
+  const params = await props.params;
 
   const hostel = await db.hostel.findUnique({
     where: { id: params.hostelId },

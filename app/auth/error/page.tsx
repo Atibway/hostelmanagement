@@ -11,7 +11,11 @@ if(isLoggedIn){
   redirect("/")
 } else{
   return (
+    <div className="relative flex items-center justify-center ">
+    <div className="z-50  mt-10 lg:t-20">
     <ErrorCard/>
+    </div>
+  </div>
   )
 }
 }
