@@ -12,9 +12,8 @@ const HomePage = async({
   searchParams
 }:SearchPageProps) => {
   const params = await searchParams 
-   console.log("Search Params",params.title)
- 
-    
+   
+
   
   const hostels = await getHostels({
     title: params.title 
