@@ -52,68 +52,31 @@ export default function MyBookingsComponent({
 
   const onPrint = (booking: BookingsColumn) => {
     const printableContent = `
-      <html>
-        <head>
-          <style>
-            body {
-              font-family: Arial, sans-serif;
-              margin: 20px;
-            }
-            .receipt {
-              border: 1px solid #ccc;
-              padding: 20px;
-              border-radius: 10px;
-              max-width: 600px;
-              margin: auto;
-            }
-            .receipt-header {
-              text-align: center;
-              margin-bottom: 20px;
-            }
-            .receipt-header h1 {
-              margin: 0;
-              font-size: 24px;
-            }
-            .receipt-details {
-              margin-bottom: 10px;
-            }
-            .receipt-details p {
-              margin: 5px 0;
-            }
-            .receipt-footer {
-              text-align: center;
-              margin-top: 20px;
-              font-size: 14px;
-              color: #888;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="receipt">
-            <div class="receipt-header">
-              <h1>Booking Receipt</h1>
-              <p>Thank you for your booking, ${booking.username}!</p>
-            </div>
-            <div class="receipt-details">
-              <p><strong>Booking ID:</strong> ${booking.id}</p>
-              <p><strong>Name:</strong> ${booking.name}</p>
-              <p><strong>Location:</strong> ${booking.location}</p>
-              <p><strong>Guests:</strong> ${booking.guests}</p>
-              <p><strong>Check-in Date:</strong> ${booking.startDate}</p>
-              <p><strong>Check-out Date:</strong> ${booking.endDate}</p>
-              <p><strong>Total Price:</strong> Shs.${booking.price}</p>
-            </div>
-            <div class="receipt-footer">
-              <p>Safe stay!</p>
-            </div>
-          </div>
-        </body>
-      </html>
+      <div>
+        <h1>Booking Receipt</h1>
+        <p><strong>Username:</strong> ${booking.username}</p>
+        <p><strong>Booking ID:</strong> ${booking.id}</p>
+        <p><strong>Location:</strong> ${booking.location}</p>
+        <p><strong>Guests:</strong> ${booking.guests}</p>
+        <p><strong>Check-in:</strong> ${booking.startDate}</p>
+        <p><strong>Check-out:</strong> ${booking.endDate}</p>
+        <p><strong>Total Price:</strong> Shs.${booking.price}</p>
+      </div>
     `;
-    const newWindow = window.open("", "_blank");
-    newWindow?.document.write(printableContent);
-    newWindow?.print();
-    newWindow?.close();
+  
+    const iframe = document.createElement("iframe");
+    iframe.style.position = "absolute";
+    iframe.style.width = "0";
+    iframe.style.height = "0";
+    iframe.style.border = "none";
+    document.body.appendChild(iframe);
+  
+    iframe.contentDocument?.write(printableContent);
+    iframe.contentDocument?.close();
+    iframe.contentWindow?.focus();
+    iframe.contentWindow?.print();
+  
+    document.body.removeChild(iframe);
   };
 
   return (
