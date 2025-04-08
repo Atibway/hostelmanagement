@@ -2,8 +2,7 @@
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import {  MapPin, Calendar, Search } from 'lucide-react'
+import {  MapPin, Calendar } from 'lucide-react'
 import { Amenity, Hostel, Image } from '@prisma/client'
 import { SearchInput } from './search-input'
 
