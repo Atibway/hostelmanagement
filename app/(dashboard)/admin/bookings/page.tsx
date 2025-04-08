@@ -19,7 +19,9 @@ const page = async() => {
   startDate: format(item.startDate, "MMMM do, yyyy"),
   endDate: format(item.endDate, "MMMM do, yyyy"),
   telNumber: item.telNumber,
-  guests: item.guests
+  guests: item.guests,
+  username: item.username as string,
+  isPaid: item.isPaid,
 }))
   return (
    
