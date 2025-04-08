@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Input } from "@/components/ui/input"
 import {  MapPin, Calendar, Search } from 'lucide-react'
 import { Amenity, Hostel, Image } from '@prisma/client'
+import { SearchInput } from './search-input'
 
 
 interface HostelWithRelations extends Hostel {
@@ -34,13 +35,7 @@ interface HostelWithRelations extends Hostel {
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
-                <form className="flex space-x-2">
-                  <Input className="flex-1" placeholder="Where are you going?" />
-                  <Button type="submit">
-                    <Search className="h-4 w-4 mr-2" />
-                    Search
-                  </Button>
-                </form>
+                <SearchInput/>
               </div>
             </div>
           </div>

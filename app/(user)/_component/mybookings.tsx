@@ -8,6 +8,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 import { deleteBooking } from "@/actions/bookingActions"
+import jsPDF from "jspdf";
 
 export type BookingsColumn = {
   id: string;
@@ -50,33 +51,19 @@ export default function MyBookingsComponent({
     }
   };
 
+ 
+
   const onPrint = (booking: BookingsColumn) => {
-    const printableContent = `
-      <div>
-        <h1>Booking Receipt</h1>
-        <p><strong>Username:</strong> ${booking.username}</p>
-        <p><strong>Booking ID:</strong> ${booking.id}</p>
-        <p><strong>Location:</strong> ${booking.location}</p>
-        <p><strong>Guests:</strong> ${booking.guests}</p>
-        <p><strong>Check-in:</strong> ${booking.startDate}</p>
-        <p><strong>Check-out:</strong> ${booking.endDate}</p>
-        <p><strong>Total Price:</strong> Shs.${booking.price}</p>
-      </div>
-    `;
-  
-    const iframe = document.createElement("iframe");
-    iframe.style.position = "absolute";
-    iframe.style.width = "0";
-    iframe.style.height = "0";
-    iframe.style.border = "none";
-    document.body.appendChild(iframe);
-  
-    iframe.contentDocument?.write(printableContent);
-    iframe.contentDocument?.close();
-    iframe.contentWindow?.focus();
-    iframe.contentWindow?.print();
-  
-    document.body.removeChild(iframe);
+    const doc = new jsPDF();
+    doc.text("Booking Receipt", 10, 10);
+    doc.text(`Username: ${booking.username}`, 10, 20);
+    doc.text(`Booking ID: ${booking.id}`, 10, 30);
+    doc.text(`Location: ${booking.location}`, 10, 40);
+    doc.text(`Guests: ${booking.guests}`, 10, 50);
+    doc.text(`Check-in Date: ${booking.startDate}`, 10, 60);
+    doc.text(`Check-out Date: ${booking.endDate}`, 10, 70);
+    doc.text(`Total Price: Shs.${booking.price}`, 10, 80);
+    doc.save("booking-receipt.pdf");
   };
 
   return (
