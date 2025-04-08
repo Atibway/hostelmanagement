@@ -11,27 +11,25 @@ import { Input } from "@/components/ui/input";
 export const SearchInput = () => {
   const [value, setValue] = useState("");
   const debouncedValue = useDebounce(value);
-
-  const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
 
-  const currentCategoryId = searchParams.get("categoryId");
+
 
   useEffect(() => {
     const url = qs.stringifyUrl(
       {
         url: pathname,
         query: {
-          categoryId: currentCategoryId,
           title: debouncedValue,
         },
       },
       { skipEmptyString: true, skipNull: true }
     );
+console.log("URL",url);
 
     router.push(url);
-  }, [debouncedValue, currentCategoryId, router, pathname]);
+  }, [debouncedValue,router, pathname]);
 
   return (
     <div className="relative w-full">
@@ -40,7 +38,7 @@ export const SearchInput = () => {
         onChange={(e) => setValue(e.target.value)}
         value={value}
         className="w-full pl-9 rounded-full bg-slate-100 focus-visible:ring-sky-200 dark:bg-slate-800 dark:text-white "
-        placeholder="Search for a course"
+        placeholder="Search for a hostel"
       />
     </div>
   );
