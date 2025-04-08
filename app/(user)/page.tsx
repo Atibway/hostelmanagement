@@ -8,19 +8,15 @@ interface SearchPageProps {
   }
 }
 
-const HomePage = async({
-  searchParams
-}:SearchPageProps) => {
-  const params = await Promise.resolve(searchParams);
-   
+const HomePage = async ({ searchParams }: SearchPageProps) => {
+  // No need to await searchParams since it's already an object.
   const hostels = await getHostels({
-    title: params.title 
-  })
+    title: searchParams.title
+  });
+  
   return (
-    <LandingPage
-    hostels={hostels}
-    />
-  )
+    <LandingPage hostels={hostels} />
+  );
 }
 
-export default HomePage
+export default HomePage;
