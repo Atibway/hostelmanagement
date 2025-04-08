@@ -11,10 +11,8 @@ interface SearchPageProps {
 const HomePage = async({
   searchParams
 }:SearchPageProps) => {
-  const params = await searchParams 
+  const params = await Promise.resolve(searchParams);
    
-
-  
   const hostels = await getHostels({
     title: params.title 
   })

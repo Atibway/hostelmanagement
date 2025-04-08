@@ -20,6 +20,7 @@ export type BookingsColumn = {
   hostelId: string;
   guests: number;
   username: string;
+  isPaid: boolean
 };
 
 export default function MyBookingsComponent({
@@ -76,7 +77,7 @@ export default function MyBookingsComponent({
       />
       <div className="container min-h-screen dark:bg-primary-foreground mx-auto px-4 py-8">
         <h1 className="text-3xl dark:text-white font-bold mb-6">My Bookings</h1>
-        {data.length === 0 ? (
+        {data.length === 0  ? (
           <p className="dark:text-white">You have no bookings yet.</p>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

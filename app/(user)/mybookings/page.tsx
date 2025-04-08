@@ -15,7 +15,8 @@ export default async function MyBookingsPage() {
   }
   const bookings = await db.booking.findMany({
     where: { 
-      userId: user?.id
+      userId: user?.id,
+      isPaid: true
   },
     include: { hostel: true },
     orderBy: { startDate: 'desc' },
@@ -31,6 +32,7 @@ export default async function MyBookingsPage() {
      guests: item.guests,
      hostelId: item.hostel.id,
      username: item.username as string,
+     isPaid: item.isPaid
    }))
 
   return (
