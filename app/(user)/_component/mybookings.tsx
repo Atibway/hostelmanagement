@@ -92,7 +92,7 @@ export default function MyBookingsComponent({
                   </CardDescription>
                     </div>
 <div>
-<Button onClick={() => onPrint(booking)}>Print Receipt</Button>
+<Button onClick={() => onPrint(booking)}>Receipt</Button>
 </div>
                   </div>
                 </CardHeader>
