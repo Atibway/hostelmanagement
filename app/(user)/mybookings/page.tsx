@@ -29,7 +29,8 @@ export default async function MyBookingsPage() {
      startDate: format(item.startDate, "MMMM do, yyyy"),
      endDate: format(item.endDate, "MMMM do, yyyy"),
      guests: item.guests,
-     hostelId: item.hostel.id
+     hostelId: item.hostel.id,
+     username: item.username as string,
    }))
 
   return (
