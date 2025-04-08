@@ -57,20 +57,7 @@ export default function HostelDetails({
             }) 
         } else {
             const result = await createBooking(formData)
-            if (result.error) {
-                toast({
-                    variant:"destructive",
-                    description: `${result.error}`,
-                })
-                console.error(result.error)
-            } else {
-                toast({
-                    
-                    description: `You Have Successfully booked ${hostelData.name}`,
-                  })
-              // Redirect to a confirmation page
-              router.push(`/hostel/${hostelData.id}/${result.booking?.id}`)
-            }
+            window.location.assign(result.url as string)
           }
       }
       

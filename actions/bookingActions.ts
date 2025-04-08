@@ -49,6 +49,7 @@ export async function createBooking(formData: FormData) {
         endDate,
         userId: user?.id as string,
         guests,
+        username: user?.name as string,
         telNumber,
         totalPrice,
         hostelId,
@@ -110,7 +111,7 @@ export async function createBooking(formData: FormData) {
         },
     });
 
-    return NextResponse.json({url: session.url})
+    return {url: session.url}
   } catch (error) {
     return { error: 'Failed to create booking' }
   }
