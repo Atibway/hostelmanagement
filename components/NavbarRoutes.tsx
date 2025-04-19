@@ -35,7 +35,7 @@ export const NavbarRoutes = () => {
         {/* Logo */}
         <Link className="flex items-center" href="/">
           <BedDouble className="h-6 w-6" />
-          <span className="ml-2 text-2xl font-bold">HostelWorld</span>
+          <span className="ml-2 text-2xl font-bold">Hostels of kabale</span>
         </Link>
 
         {/* Desktop Navigation */}
